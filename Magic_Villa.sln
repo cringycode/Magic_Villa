@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magic_Villa_VillaAPI", "Magic_Villa_VillaAPI\Magic_Villa_VillaAPI.csproj", "{105E8642-D818-4FAF-8E74-E042B4763D99}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Magic_Villa_Web", "Magic_Villa_Web\Magic_Villa_Web.csproj", "{72578738-B8B0-4B6F-993D-0C253CB0875A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{105E8642-D818-4FAF-8E74-E042B4763D99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{105E8642-D818-4FAF-8E74-E042B4763D99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{105E8642-D818-4FAF-8E74-E042B4763D99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72578738-B8B0-4B6F-993D-0C253CB0875A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72578738-B8B0-4B6F-993D-0C253CB0875A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72578738-B8B0-4B6F-993D-0C253CB0875A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72578738-B8B0-4B6F-993D-0C253CB0875A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
