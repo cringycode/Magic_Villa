@@ -6,4 +6,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Magic_Villa_Utility\Magic_Villa_Utility.csproj" />
+    </ItemGroup>
+
 </Project>
