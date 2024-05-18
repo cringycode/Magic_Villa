@@ -3,8 +3,8 @@ using Magic_Villa_Web.Models;
 using Magic_Villa_Web.Models.Dto;
 using Magic_Villa_Web.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Elfie.Serialization;
 using Newtonsoft.Json;
+using System.Reflection;
 
 namespace Magic_Villa_Web.Controllers
 {
@@ -66,18 +66,68 @@ namespace Magic_Villa_Web.Controllers
 
         #region UPDATE
 
-        public IActionResult UpdateVilla()
+        public async Task<IActionResult> UpdateVilla(int villaId)
         {
-            throw new NotImplementedException();
+            var response = await _villaService.Get<APIResponse>(villaId);
+            if (response != null && response.IsSuccess)
+            {
+                VillaDTO model = JsonConvert.DeserializeObject<VillaDTO>(Convert.ToString(response.Result));
+                return View(_mapper.Map<VillaUpdateDTO>(model));
+            }
+            else
+            {
+                if (response.ErrorMessages.Count > 0)
+                {
+                    ModelState.AddModelError("ErrorMessages", response.ErrorMessages.FirstOrDefault());
+                }
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> UpdateVilla(VillaUpdateDTO model)
+        {
+            if (ModelState.IsValid)
+            {
+                var response = await _villaService.Update<APIResponse>(model);
+                if (response != null && response.IsSuccess)
+                {
+                    return RedirectToAction(nameof(IndexVilla));
+                }
+            }
+
+            return View(model);
         }
 
         #endregion
 
         #region DELETE
 
-        public IActionResult DeleteVilla()
+        public async Task<IActionResult> DeleteVilla(int villaId)
         {
-            throw new NotImplementedException();
+            var response = await _villaService.Get<APIResponse>(villaId);
+            if (response != null && response.IsSuccess)
+            {
+                VillaDTO model = JsonConvert.DeserializeObject<VillaDTO>(Convert.ToString(response.Result));
+                return View(model);
+            }
+
+            return NotFound();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteVilla(VillaDTO model)
+        {
+            var response = await _villaService.Delete<APIResponse>(model.Id);
+            if (response != null && response.IsSuccess)
+            {
+                return RedirectToAction(nameof(IndexVilla));
+            }
+
+            return View(model);
         }
 
         #endregion
